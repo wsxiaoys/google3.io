@@ -1,16 +1,12 @@
 def setup_workspace():
   # GRPC
-  native.git_repository(name="grpc",
-      tag="v1.1.2",
-      remote="https://github.com/grpc/grpc.git")
-
   native.bind(
       name = "grpc_cpp_plugin",
-      actual = "@grpc//:grpc_cpp_plugin")
+      actual = "//third_party/grpc:grpc_cpp_plugin")
 
   native.bind(
       name = "grpc_lib",
-      actual = "@grpc//:grpc++_unsecure")
+      actual = "//third_party/grpc:grpc++_unsecure")
 
   # Protocol Buffer
   native.git_repository(name="protobuf",

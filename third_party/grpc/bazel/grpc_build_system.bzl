@@ -45,6 +45,7 @@ def grpc_cc_library(name, srcs = [], public_hdrs = [], hdrs = [], external_deps 
     copts = copts,
     linkopts = ["-pthread"],
     includes = [
+        ".",
         "include"
     ]
   )
@@ -56,7 +57,7 @@ def grpc_proto_plugin(name, srcs = [], deps = []):
     deps = deps,
   )
 
-load("//:bazel/cc_grpc_library.bzl", "cc_grpc_library")
+load("//third_party/grpc/bazel:cc_grpc_library.bzl", "cc_grpc_library")
 
 def grpc_proto_library(name, srcs = [], deps = [], well_known_deps = [], has_services = True):
   cc_grpc_library(
