@@ -23,13 +23,9 @@ def setup_workspace():
   )
 
   # nanopb
-  native.git_repository(name="nanopb_git",
-      tag="nanopb-0.3.7",
-      remote="https://github.com/nanopb/nanopb.git")
-
   native.bind(
       name = "nanopb",
-      actual = "@nanopb_git//:nanopb",
+      actual = str(Label("//third_party/nanopb:nanopb")),
   )
 
   # Python SIX
