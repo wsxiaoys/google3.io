@@ -18,12 +18,6 @@ def setup_workspace():
       actual = "@protobuf//:protoc_lib",
   )
 
-  # nanopb
-  native.bind(
-      name = "nanopb",
-      actual = str(Label("//third_party/nanopb:nanopb")),
-  )
-
   # Python SIX
   native.new_http_archive(
       name = "six_archive",
@@ -53,14 +47,10 @@ def setup_workspace():
   )
 
   # boringssl
-  native.http_archive(
+  native.git_repository(
       name = "boringssl",
-      urls = [
-          "http://bazel-mirror.storage.googleapis.com/github.com/google/boringssl/archive/bbcaa15b0647816b9a1a9b9e0d209cd6712f0105.tar.gz",
-          "https://github.com/google/boringssl/archive/bbcaa15b0647816b9a1a9b9e0d209cd6712f0105.tar.gz",  # 2016-07-11
-      ],
-      sha256 = "025264d6e9a7ad371f2f66d17a28b6627de0c9592dc2eb54afd062f68f1f9aa3",
-      strip_prefix = "boringssl-bbcaa15b0647816b9a1a9b9e0d209cd6712f0105",
+      commit="7cfb037",
+      remote="https://github.com/google/boringssl.git"
   )
 
   native.bind(

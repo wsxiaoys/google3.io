@@ -285,15 +285,13 @@ grpc_cc_library(
         "src/core/ext/census/rpc_metric_id.h",
         "src/core/ext/census/trace_context.h",
     ],
-    external_deps = [
-        "nanopb",
-    ],
     language = "c",
     public_hdrs = [
         "include/grpc/census.h",
     ],
     deps = [
         "grpc_base",
+	"//third_party/nanopb",
     ],
 )
 
@@ -727,13 +725,11 @@ grpc_cc_library(
         "src/core/ext/lb_policy/grpclb/load_balancer_api.h",
         "src/core/ext/lb_policy/grpclb/proto/grpc/lb/v1/load_balancer.pb.h",
     ],
-    external_deps = [
-        "nanopb",
-    ],
     language = "c",
     deps = [
         "grpc_base",
         "grpc_client_channel",
+	"//third_party/nanopb",
     ],
 )
 
