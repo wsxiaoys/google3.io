@@ -152,10 +152,10 @@ def cc_proto_library(
         deps=[],
         cc_libs=[],
         include=None,
-        protoc="//:protoc",
+        protoc="//third_party/protobuf:protoc",
         internal_bootstrap_hack=False,
         use_grpc_plugin=False,
-        default_runtime="//:protobuf",
+        default_runtime="//third_party/protobuf",
         **kargs):
   """Bazel rule to create a C++ protobuf library from proto source files
 
@@ -206,7 +206,7 @@ def cc_proto_library(
 
   grpc_cpp_plugin = None
   if use_grpc_plugin:
-    grpc_cpp_plugin = "//external:grpc_cpp_plugin"
+    grpc_cpp_plugin = "//third_party/grpc:grpc_cpp_plugin"
 
   gen_srcs = _CcSrcs(srcs, use_grpc_plugin)
   gen_hdrs = _CcHdrs(srcs, use_grpc_plugin)
@@ -228,7 +228,8 @@ def cc_proto_library(
   if default_runtime and not default_runtime in cc_libs:
     cc_libs += [default_runtime]
   if use_grpc_plugin:
-    cc_libs += ["//external:grpc_lib"]
+    cc_libs += ["//third_party/grpc:grpc++",
+		"//third_party/grpc:grpc++_codegen_proto"]
 
   native.cc_library(
       name=name,
@@ -297,8 +298,8 @@ def py_proto_library(
         py_libs=[],
         py_extra_srcs=[],
         include=None,
-        default_runtime="//:protobuf_python",
-        protoc="//:protoc",
+        default_runtime="//third_party/protobuf:protobuf_python",
+        protoc="//third_party/protobuf:protoc",
         use_grpc_plugin=False,
         **kargs):
   """Bazel rule to create a Python protobuf library from proto source files
@@ -332,7 +333,7 @@ def py_proto_library(
 
   grpc_python_plugin = None
   if use_grpc_plugin:
-    grpc_python_plugin = "//external:grpc_python_plugin"
+    grpc_python_plugin = "//third_party/grpc:grpc_python_plugin"
     # Note: Generated grpc code depends on Python grpc module. This dependency
     # is not explicitly listed in py_libs. Instead, host system is assumed to
     # have grpc installed.

@@ -1,23 +1,4 @@
 def setup_workspace():
-  # GRPC
-  native.bind(
-      name = "grpc_cpp_plugin",
-      actual = "//third_party/grpc:grpc_cpp_plugin")
-
-  native.bind(
-      name = "grpc_lib",
-      actual = "//third_party/grpc:grpc++_unsecure")
-
-  # Protocol Buffer
-  native.git_repository(name="protobuf",
-      tag="v3.2.0",
-      remote="https://github.com/google/protobuf.git")
-
-  native.bind(
-      name = "protobuf_clib",
-      actual = "@protobuf//:protoc_lib",
-  )
-
   # Python SIX
   native.new_http_archive(
       name = "six_archive",

@@ -191,12 +191,10 @@ grpc_cc_library(
         "src/compiler/ruby_generator_map-inl.h",
         "src/compiler/ruby_generator_string-inl.h",
     ],
-    external_deps = [
-        "protobuf_clib",
-    ],
     language = "c++",
     deps = [
         "grpc++_config_proto",
+	"//third_party/protobuf:protoc_lib",
     ],
 )
 
