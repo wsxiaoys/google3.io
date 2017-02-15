@@ -1,0 +1,1 @@
+load("@//third_party/protobuf:protobuf.bzl", "cc_proto_library", "py_proto_library")

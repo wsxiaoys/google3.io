@@ -30,10 +30,11 @@ def setup_workspace():
   # boringssl
   native.git_repository(
       name = "boringssl",
-      commit="7cfb037",
-      remote="https://github.com/google/boringssl.git"
+      commit = "7cfb037",
+      remote = "https://github.com/google/boringssl.git"
   )
 
   native.bind(
       name = "libssl",
-      actual = "@boringssl//:ssl")
+      actual = "@boringssl//:ssl"
+  )
